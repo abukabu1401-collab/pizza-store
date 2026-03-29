@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>➕ Добавить пиццу</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>➕ Добавить новую пиццу</h1>
+            <p>Пополните наше меню!</p>
+            <div class="nav">
+                <a href="/">Главная</a>
+                <a href="/login">Вход</a>
+                <a href="/register">Регистрация</a>
+            </div>
+        </div>
+        
+        <div class="form-card">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% for category, message in messages %}
+                    <div class="flash-message flash-{{ category }}">{{ message }}</div>
+                {% endfor %}
+            {% endwith %}
+            
+            <!-- novalidate отключает HTML5 валидацию -->
+            <form method="post" novalidate>
+                <div class="form-group">
+                    <label>Название пиццы *</label>
+                    <input type="text" name="name" placeholder="Пример: Маргарита">
+                </div>
+                
+                <div class="form-group">
+                    <label>Цена (руб) *</label>
+                    <input type="text" name="price" placeholder="Пример: 450">
+                </div>
+                
+                <div class="form-group">
+                    <label>Размер (см) *</label>
+                    <select name="size">
+                        <option value="">Выберите размер</option>
+                        <option value="25">25 см (маленькая)</option>
+                        <option value="30">30 см (средняя)</option>
+                        <option value="35">35 см (большая)</option>
+                        <option value="40">40 см (семейная)</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>Ингредиенты *</label>
+                    <textarea name="ingredients" rows="3" placeholder="Пример: томатный соус, моцарелла, базилик"></textarea>
+                    <small style="color: #666;">Ингредиенты перечисляйте через запятую</small>
+                </div>
+                
+                <button type="submit" class="btn">➕ Добавить пиццу</button>
+            </form>
+            
+            <a href="/" class="back-link">← На главную</a>
+        </div>
+        
+        <div class="footer">
+            <p>Пиццерия | Добавление пиццы</p>
+        </div>
+    </div>
+</body>
+</html>

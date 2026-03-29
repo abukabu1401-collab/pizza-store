@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>🍕 Пиццерия</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🍕 Пиццерия</h1>
+            <p>Самые вкусные пиццы только у нас!</p>
+            <div class="stats">
+                <span>🍕 Всего пицц: {{ pizza_count }}</span>
+                <span>💰 Средняя цена: {{ avg_price }} ₽</span>
+            </div>
+            <div class="nav">
+                <a href="/">Главная</a>
+                <a href="/login">Вход</a>
+                <a href="/register">Регистрация</a>
+            </div>
+        </div>
+        
+        <!-- Панель администратора -->
+        <div class="admin-panel">
+            <h3>🛠️ Управление меню</h3>
+            <div class="admin-buttons">
+                <a href="/add_pizza" class="btn-admin">➕ Добавить пиццу</a>
+                <button class="btn-admin danger" onclick="if(confirm('Удалить ВСЕ пиццы?')) window.location.href='/delete_all'">🗑️ Удалить все</button>
+            </div>
+        </div>
+        
+        <!-- Панель сортировки -->
+        <div class="sort-panel">
+            <h3>📋 Сортировка</h3>
+            <div class="sort-buttons">
+                <a href="/" class="sort-btn">Все пиццы</a>
+                <a href="/sort_by_price" class="sort-btn">💰 Цена ↑ (дешевые)</a>
+                <a href="/sort_by_price_desc" class="sort-btn">💰 Цена ↓ (дорогие)</a>
+                <a href="/sort_by_name" class="sort-btn">🔤 Название (А-Я)</a>
+                <a href="/sort_by_size" class="sort-btn">📏 Размер</a>
+            </div>
+            
+            <div class="filter-form">
+                <span>💰 Фильтр по цене:</span>
+                <form action="/filter_by_price" method="get" style="display: flex; gap: 10px;">
+                    <input type="number" name="min" placeholder="От" value="0">
+                    <input type="number" name="max" placeholder="До" value="1000">
+                    <button type="submit">Показать</button>
+                </form>
+            </div>
+        </div>
+        
+        {% if sort_info %}
+        <div class="sort-info">
+            🔍 {{ sort_info }}
+        </div>
+        {% endif %}
+        
+        <!-- Список пицц -->
+        <div class="pizza-grid">
+            {% for pizza in pizzas %}
+            <div class="pizza-card">
+                <div class="pizza-name">{{ pizza.name }}</div>
+                <div class="pizza-size">📏 Размер: {{ pizza.size }} см</div>
+                <div class="pizza-price">{{ pizza.price }} ₽</div>
+                <div class="pizza-ingredients">
+                    <strong>🍅 Ингредиенты:</strong><br>
+                    {{ pizza.ingridientes | join(', ') }}
+                </div>
+                <button class="order-btn" onclick="alert('{{ pizza.name }} добавлена в корзину! 🛒')">
+                    🛒 Заказать
+                </button>
+                <a href="/edit_pizza/{{ pizza.name }}" class="edit-link">✏️ Редактировать</a>
+            </div>
+            {% endfor %}
+        </div>
+        
+        <div class="footer">
+            <p>Пиццерия </p>
+        </div>
+    </div>
+</body>
+</html>

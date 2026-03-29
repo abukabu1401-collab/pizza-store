@@ -1,0 +1,392 @@
+/* Общие стили */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f5f5f5;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Шапка */
+.header {
+    background: #ff6b35;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+
+.header h1 {
+    margin-bottom: 10px;
+    font-size: 32px;
+}
+
+.header p {
+    margin-bottom: 15px;
+}
+
+/* Навигация */
+.nav {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 15px;
+}
+
+.nav a {
+    color: white;
+    text-decoration: none;
+    background: rgba(255,255,255,0.2);
+    padding: 8px 20px;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.nav a:hover {
+    background: rgba(255,255,255,0.3);
+}
+
+/* Статистика */
+.stats {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 15px;
+    flex-wrap: wrap;
+}
+
+.stats span {
+    background: rgba(255,255,255,0.2);
+    padding: 5px 15px;
+    border-radius: 20px;
+}
+
+/* Панель админа */
+.admin-panel {
+    background: #fff5f0;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.admin-panel h3 {
+    color: #ff6b35;
+}
+
+.admin-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-admin {
+    background: #28a745;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.btn-admin.danger {
+    background: #dc3545;
+}
+
+.btn-admin:hover {
+    opacity: 0.9;
+}
+
+/* Панель сортировки */
+.sort-panel {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.sort-panel h3 {
+    margin-bottom: 10px;
+    color: #ff6b35;
+}
+
+.sort-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.sort-btn {
+    background: #f0f0f0;
+    padding: 8px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #333;
+    transition: 0.3s;
+}
+
+.sort-btn:hover {
+    background: #ff6b35;
+    color: white;
+}
+
+/* Фильтры */
+.filter-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #ddd;
+}
+
+.filter-form input {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.filter-form button {
+    background: #ff6b35;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Информация о сортировке */
+.sort-info {
+    background: #e8f4f8;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #2c3e50;
+}
+
+/* Топ пицц */
+.top-pizzas {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+.top-pizzas h2 {
+    color: #ff6b35;
+    margin-bottom: 15px;
+}
+
+.top-list {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.top-item {
+    background: #fff5f0;
+    padding: 15px;
+    border-radius: 8px;
+    flex: 1;
+    text-align: center;
+}
+
+.top-item .name {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.top-item .rating {
+    color: #ff6b35;
+    margin: 5px 0;
+}
+
+/* Сетка пицц */
+.pizza-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+/* Карточка пиццы */
+.pizza-card {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+
+.pizza-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.pizza-name {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ff6b35;
+}
+
+.pizza-size {
+    color: #666;
+    font-size: 14px;
+    margin: 5px 0;
+}
+
+.pizza-price {
+    font-size: 28px;
+    font-weight: bold;
+    color: #2c3e50;
+    margin: 15px 0;
+}
+
+.pizza-ingredients {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 15px;
+    line-height: 1.4;
+}
+
+.order-btn {
+    background: #ff6b35;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+}
+
+.order-btn:hover {
+    background: #ff5722;
+}
+
+.edit-link {
+    display: inline-block;
+    margin-top: 10px;
+    text-align: center;
+    color: #ff6b35;
+    text-decoration: none;
+    font-size: 14px;
+    width: 100%;
+}
+
+/* Формы */
+.form-card {
+    background: white;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+input, textarea, select {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+input:focus, textarea:focus, select:focus {
+    outline: none;
+    border-color: #ff6b35;
+}
+
+.btn {
+    background: #ff6b35;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+}
+
+.btn:hover {
+    background: #ff5722;
+}
+
+.back-link {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    color: #ff6b35;
+    text-decoration: none;
+}
+
+/* Сообщения */
+.flash-message {
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.flash-success {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.flash-error {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* Подвал */
+.footer {
+    text-align: center;
+    margin-top: 30px;
+    padding: 20px;
+    color: #666;
+    font-size: 12px;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .pizza-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .top-list {
+        flex-direction: column;
+    }
+    
+    .admin-panel {
+        flex-direction: column;
+        text-align: center;
+    }
+}
