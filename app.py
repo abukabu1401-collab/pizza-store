@@ -1,13 +1,14 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
 from repositrory.pizza_repository import PizzaRepository
 from models.pizza import Pizza
-
+from repositrory.user_repository import UserRepository
+from models.user import User
 app = Flask(__name__)
 app.secret_key = 'pizza_secret_key'
 
 # Создаем репозиторий
 repo = PizzaRepository()
-
+user_repository = UserRepository()
 # Добавляем начальные пиццы
 def add_initial_pizzas():
     pizzas = [
@@ -102,21 +103,26 @@ def delete_all():
 @app.route('/sort_by_price')
 def sort_by_price():
     """Сортировка по цене (дешевые сначала)"""
+    repo.sort_by_price()
+    return redirect(url_for('index'))
 
 
 @app.route('/sort_by_price_desc')
 def sort_by_price_desc():
     """Сортировка по цене (дорогие сначала)"""
-
+    repo.sort_by_price_from_max_to_mine()
+    return redirect(url_for('index'))
 @app.route('/sort_by_name')
 def sort_by_name():
     """Сортировка по названию"""
-
+    repo.sort_by_name()
+    return redirect(url_for('index'))
 
 @app.route('/sort_by_size')
 def sort_by_size():
     """Сортировка по размеру"""
-
+    repo.sort_by_size()
+    return redirect(url_for('index'))
 
 @app.route('/filter_by_price')
 def filter_by_price():
@@ -136,9 +142,8 @@ def filter_by_price():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     """Страница входа (только UI)"""
-    if request.method == 'POST':
-        # Здесь будет логика авторизации (следующий урок)
-        flash("Авторизация будет добавлена позже!", 'info')
+    ###if request.method == 'POST':
+        ###user_repository.add_new_user()
     return render_template('login.html')
 
 
@@ -146,8 +151,12 @@ def login():
 def register():
     """Страница регистрации (только UI)"""
     if request.method == 'POST':
-        # Здесь будет логика регистрации (следующий урок)
-        flash("Регистрация будет добавлена позже!", 'info')
+        login = request.form.get("username")
+        password = request.form.get("password")
+        user = User(login,password)
+        user_repository.add_new_user(user)
+        for i in range(len(user_repository.get_all_users())):
+            print(user_repository.get_all_users()[i])
     return render_template('register.html')
 
 

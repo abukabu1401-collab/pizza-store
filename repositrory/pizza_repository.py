@@ -38,3 +38,15 @@ class PizzaRepository:
         for i in range(len(self.pizzas)):
             if name_pizza == self.pizzas[i].name:
                 self.pizzas[i].name = new_name
+                
+    def sort_by_price(self)->None:
+        self.pizzas.sort(key=lambda pizza: pizza.price)
+
+    def sort_by_name(self)->None:
+        self.pizzas.sort(key=lambda pizza: pizza.name)
+
+    def sort_by_size(self)->None:
+        self.pizzas.sort(key=lambda pizza: pizza.size)
+        
+    def sort_by_price_from_max_to_mine(self)->None:
+        self.pizzas.sort(key=lambda pizza: pizza.price,reverse=True)
