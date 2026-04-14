@@ -25,3 +25,31 @@ class UserRepository:
                 
     def get_all_users(self)->list:
         return self.users.copy()
+    
+def authorization(self):
+    login = input("Введите логин: ")
+    password = input("Введите пароль: ")
+    
+    for i in range(len(self.users)):
+        if login == self.users[i].login and password == self.users[i].password:
+            print("Авторизация успешна")
+            return self.users[i]
+    
+    print("Неверный логин или пароль")
+    
+def add_new_user(self, user: User):
+    if user.login == "":
+        print("Логин не может быть пустым")
+        return
+
+    if user.password == "":
+        print("Пароль не может быть пустым")
+        return
+
+    for i in range(len(self.users)):
+        if self.users[i].login == user.login:
+            print("Пользователь с таким логином уже существует")
+            return
+
+    self.users.append(user)
+    print("Пользователь успешно добавлен")
